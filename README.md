@@ -3,6 +3,9 @@ A spreadsheet that can easily execute functions (called commands) created with G
 
 The original spreadsheet is [here](https://docs.google.com/spreadsheets/d/1CczyGa-ueY45RTaK75133SXSgukI_PEiFpFWl5YDp8Y).
 
+![image](https://user-images.githubusercontent.com/82203087/124220302-a0f51580-db38-11eb-9d61-05f337308221.png)
+
+
 ## What is this?
 This spreadsheet will help you in the following ways.
 * Makes your functions manageable and easy to understand.
@@ -62,10 +65,8 @@ The first time you run it, you will see a dialog asking for permission to run th
   **Don't let the word "unsafe" scare you. It's a dialog that all of us face when running our personal scripts.👍**
 
 
-### 7. Click `Yes` and check the result.
+### 7. Click `Yes` and check the result (as shown at the top of this page).
 ![image](https://user-images.githubusercontent.com/82203087/124218975-4c509b00-db36-11eb-9e84-7b4b5f6e425e.png)
-
-![image](https://user-images.githubusercontent.com/82203087/124220302-a0f51580-db38-11eb-9d61-05f337308221.png)
 
 
 ## If you want to modify this tool using clasp

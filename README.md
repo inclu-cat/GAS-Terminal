@@ -62,7 +62,7 @@ The first time you run it, you will see a dialog asking for permission to run th
 
 * Then click Execute button again.
 
-  **Don't let the word "unsafe" scare you. It's a dialog that all of us face when running our personal scripts.👍**
+  **Don't worry about the word "unsafe". It's a dialog that all of us face when running our personal scripts.👍**
 
 
 ### 7. Click `Yes` and check the result (as shown at the top of this page).

@@ -8,9 +8,9 @@ The original spreadsheet is [here](https://docs.google.com/spreadsheets/d/1CczyG
 
 ## What is this?
 This spreadsheet will help you in the following ways.
-* Makes your functions manageable and easy to understand.
-* Allows you to modify execution parameters and to run the functions easily.
-* Allows you to check the execution result log easily.
+* it makes your functions manageable and easy to understand.
+* it allows you to modify execution parameters and to run the functions easily.
+* it allows you to check the execution result log easily.
 
 ## How to use
 ### 1. Copy the original spreadsheet (only once).

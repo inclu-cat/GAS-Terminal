@@ -1,5 +1,5 @@
 # GAS-Terminal
-A spreadsheet that can easily execute functions (called commands) created with Google apps script.
+A spreadsheet that can easily execute functions (called *commands*) created with Google Apps Script.
 
 The original spreadsheet is [here](https://docs.google.com/spreadsheets/d/1CczyGa-ueY45RTaK75133SXSgukI_PEiFpFWl5YDp8Y).
 
@@ -81,7 +81,3 @@ The first time you run it, you will see a dialog asking for permission to run th
  
 ## Future Plans
 Google Apps Script has the 6 minute execution time limit. This problem is very tricky. So I'll make a feature that support long-run script executions.
-
-
-
-

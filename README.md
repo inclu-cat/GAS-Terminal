@@ -1,4 +1,4 @@
-# GAS-Terminal ( Under construction )
+# GAS-Terminal
 A spreadsheet that can easily execute functions (called commands) created with Google apps script.
 
 The original spreadsheet is [here](https://docs.google.com/spreadsheets/d/1CczyGa-ueY45RTaK75133SXSgukI_PEiFpFWl5YDp8Y).
@@ -69,12 +69,18 @@ The first time you run it, you will see a dialog asking for permission to run th
 ![image](https://user-images.githubusercontent.com/82203087/124218975-4c509b00-db36-11eb-9e84-7b4b5f6e425e.png)
 
 
-## If you want to modify this tool using clasp
-under construction
+## If you want to modify this tool by using clasp and TypeScript
+1. Follow the instructions above to copy the original spreadsheet. 
+2. Open the Script editor, Click `Project Settings`, Copy the `Script ID`. (We'll use it later)
+3. If you have not installed `clasp` yet, install `clasp`, following [the official page](https://github.com/google/clasp).
+4. Do the command `clasp login`, and login with your account. (If you have not done yet)
+5. Clone this repository, and open the cloned project with your IDE.
+6. open `.clasp.json`, and replace the `scriptId` with your `Script ID` copied above.
+7. You can make any changes you like to the cloned code.
+8. Then do the command `clasp push`, and it will replace your copied spreadsheet's App Script with your code.
  
-## The road map
-under construction
-
+## Future Plans
+Google Apps Script has the 6 minute execution time limit. This problem is very tricky. So I'll make a feature that support long-run script executions.
 
 
 

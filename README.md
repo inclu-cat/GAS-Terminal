@@ -77,7 +77,7 @@ The first time you run it, you will see a dialog asking for permission to run th
 5. Clone this repository, and open the cloned project with your IDE.
 6. open `.clasp.json`, and replace the `scriptId` with your `Script ID` copied above.
 7. You can make any changes you like to the cloned code.
-8. Then do the command `clasp push`, and it will replace your copied spreadsheet's App Script with your code.
+8. Then do the command `clasp push`, and it will replace your copied spreadsheet's Apps Script with your code.
  
 ## Future Plans
 Google Apps Script has the 6 minute execution time limit. This problem is very tricky. So I'll make a feature that support long-run script executions.

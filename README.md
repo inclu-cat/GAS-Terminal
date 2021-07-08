@@ -3,6 +3,8 @@ A spreadsheet that can easily execute functions (called *commands*) created with
 
 The original spreadsheet is [here](https://docs.google.com/spreadsheets/d/1CczyGa-ueY45RTaK75133SXSgukI_PEiFpFWl5YDp8Y).
 
+Related article is [here](https://inclucat.wordpress.com/2021/07/07/gas-terminal-environment-for-smart-execution-of-google-apps-script/).
+
 ![image](https://user-images.githubusercontent.com/82203087/124220302-a0f51580-db38-11eb-9d61-05f337308221.png)
 
 

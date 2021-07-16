@@ -34,6 +34,7 @@ In the Script editor, you can write any function you need. You can write it in a
 **Tips**
 * To output the log to the result area, use the LogUtils class.
 * A function can have up to five arguments. (All parameters are of type string)
+* If you want to implement a function that runs for a long time, use the LongRun class. (See the bottom of this README)
 
 ### 4. Write the definition of the command
 In the Commands sheet, write the command definition that corresponds to the function you wrote.

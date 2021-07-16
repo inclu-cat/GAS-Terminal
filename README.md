@@ -74,11 +74,11 @@ The first time you run it, you will see a dialog asking for permission to run th
 
 ## If you want to modify this tool by using clasp and TypeScript
 1. Follow the instructions above to copy the original spreadsheet. 
-2. Open the Script editor, Click `Project Settings`, Copy the `Script ID`. (We'll use it later)
+2. Open the Script editor, click `Project Settings`, copy the `Script ID`. (We'll use it later)
 3. If you have not installed `clasp` yet, install `clasp`, following [the official page](https://github.com/google/clasp).
 4. Do the command `clasp login`, and login with your account. (If you have not done yet)
 5. Clone this repository, and open the cloned project with your IDE.
-6. open `.clasp.json`, and replace the `scriptId` with your `Script ID` copied above.
+6. Open `.clasp.json`, and replace the `scriptId` with your `Script ID` copied above.
 7. You can make any changes you like to the cloned code.
 8. Then do the command `clasp push`, and it will replace your copied spreadsheet's Apps Script with your code.
  

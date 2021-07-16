@@ -39,7 +39,7 @@ In the Script editor, you can write any function you need. You can write it in a
 ### 4. Write the definition of the command
 In the Commands sheet, write the command definition that corresponds to the function you wrote.
 
-![image](https://user-images.githubusercontent.com/82203087/124215369-d432a700-db2e-11eb-9436-a0558047323a.png)
+![image](https://user-images.githubusercontent.com/82203087/125890198-700d87f4-183d-4238-99a9-c0bc8ec372d0.png)
 
 ### 5. Execute the command
 In the Terminal sheet, select the command, input parameters, then click the Execute button.

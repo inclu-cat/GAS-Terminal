@@ -88,7 +88,7 @@ export class TerminalController {
 
       // check if the command has already run.
       if( LongRun.instance.isRunning(commandDef.funcName) ){
-        let ret:string = Browser.msgBox('[' + commandDef.commandName + '] is already running.' +
+        let ret:string = Browser.msgBox('[' + commandDef.commandName + '] is already running.\\n' +
           'Do you want to ignore it and run?', Browser.Buttons.YES_NO);
         if( ret != "yes" ){
           return;
@@ -151,7 +151,7 @@ export class TerminalController {
 
     // check if the command has already run.
     if( LongRun.instance.existsNextTrigger(commandDef.funcName) ){
-      let ret:string = Browser.msgBox('[' + commandDef.commandName + '] already has next trigger.' +
+      let ret:string = Browser.msgBox('[' + commandDef.commandName + '] already has next trigger.\\n' +
         'Do you want to ignore it and run?', Browser.Buttons.YES_NO);
       if( ret != "yes" ){
         return;

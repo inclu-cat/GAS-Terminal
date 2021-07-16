@@ -6,6 +6,7 @@ import {SettingsConst} from "./SettingsConst";
 import {SheetBase} from "./0/SheetBase";
 import Range = GoogleAppsScript.Spreadsheet.Range;
 import {StringUtils} from "./StringUtils";
+import {LogUtils} from "./LogUtils";
 
 export class TerminalSheet extends SheetBase {
   protected _CELL_COMMAND:string;
@@ -70,9 +71,9 @@ export class TerminalSheet extends SheetBase {
   /**
    * Returns the parameters.
    */
-  public getParams():string[]{
+  public getParams(paramCount: number):string[]{
     let ret:string[] = [];
-    for( let i = 0; i < this._CELL_PARAM.length; i++ ){
+    for( let i = 0; i < paramCount && i < this._CELL_PARAM.length; i++ ){
       let range:Range = this._sheet.getRange(this._CELL_PARAM[i]);
       let value:string = String(range.getValue());
       ret.push(StringUtils.isEmpty(value)?"":value);

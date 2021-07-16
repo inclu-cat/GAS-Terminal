@@ -1,6 +1,8 @@
 /**
  * Logger interface
  */
+import {TerminalSheet} from "./TerminalSheet";
+
 export interface LogInterface{
   /**
    * Outputs a log.
@@ -11,13 +13,6 @@ export interface LogInterface{
  * Utilities for logging.
  */
 export class LogUtils{
-  /** Logger */
-  private static _logger:LogInterface = null;
-
-  static set logger(value:LogInterface) {
-    this._logger = value;
-  }
-
   /**
    * Outputs a information log.
    */
@@ -69,9 +64,9 @@ export class LogUtils{
     // Script log
     Logger.log(message);
 
-    // If logger is set
-    if( this._logger ){
-      this._logger.outputLog(message);
+    // If TerminalSheet is exists, output log to it.
+    if( TerminalSheet.instance ){
+      TerminalSheet.instance.outputLog(message);
     }
   }
 

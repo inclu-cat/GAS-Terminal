@@ -6,6 +6,7 @@ import {StringUtils} from "./StringUtils";
 import {CommandDefinition} from "./CommandDefinition";
 import {CommandsSheet} from "./CommandsSheet";
 import {LogUtils} from "./LogUtils";
+import {LongRun} from "./LongRun";
 
 /**
  * Runs when a user opens a spreadsheet.
@@ -70,46 +71,105 @@ export class TerminalController {
    */
   public onExecuteButtonClick():void{
     try {
-      // Gets the command name,
+      // get the command name,
       let commandName:string = TerminalSheet.instance.getCommandName();
       if( StringUtils.isEmpty(commandName) ){
           Browser.msgBox("You should select command first")
           return;
       }
-      // Confirms with the user.
-      let ret:string = Browser.msgBox("Are you sure to execute ["+commandName+"]？", Browser.Buttons.YES_NO);
+      // confirm with the user.
+      let ret:string = Browser.msgBox("Are you sure to execute ["+commandName+"]?", Browser.Buttons.YES_NO);
       if( ret != "yes" ){
           return;
       }
 
-      // Clears the log.
-      TerminalSheet.instance.clearLog();
-
-      // Sets the TerminalSheet as logger.
-      LogUtils.logger = TerminalSheet.instance;
-
-      // Gets the command define.
+      // get the command define.
       let commandDef:CommandDefinition = CommandsSheet.instance.findCommand(commandName);
 
-      // Makes the parameter string.
-      let params:string[] = TerminalSheet.instance.getParams();
-      let paramsStr:string = "";
-      if( params.length > 0 ){
-          paramsStr = '"' + params.join('","') + '"';
+      // check if the command has already run.
+      if( LongRun.instance.isRunning(commandDef.funcName) ){
+        let ret:string = Browser.msgBox('[' + commandDef.commandName + '] is already running.' +
+          'Do you want to ignore it and run?', Browser.Buttons.YES_NO);
+        if( ret != "yes" ){
+          return;
+        }
       }
 
-      // Make the function call string.
-      let callStr:string = commandDef.funcName + "(" + paramsStr + ")";
-
-      // // TODO debug
-      // LogUtils.i("callStr="+callStr);
-
-      // Executes
-      eval(callStr);
-
+      // long-run commands
+      if( commandDef.isLongRun ) {
+        this.executeLongRunCommand(commandDef);
+      }
+      // the ordinarily commands
+      else {
+        this.executeNormalCommand(commandDef);
+      }
     }
     catch (e) {
       LogUtils.ex(e);
     }
+  }
+
+  /**
+   * Executes normal command
+   * @param commandDef
+   * @private
+   */
+  private executeNormalCommand(commandDef:CommandDefinition): void{
+    let params:string[] = TerminalSheet.instance.getParams(commandDef.getParamCount());
+    let paramsStr:string = "";
+
+    // clear the log.
+    TerminalSheet.instance.clearLog();
+
+    // make the parameter string.
+    if (params.length > 0) {
+      paramsStr = '"' + params.join('","') + '"';
+    }
+
+    // make the function call string.
+    let callStr:string = commandDef.funcName + "(" + paramsStr + ")";
+
+    try {
+      // set running-flg on
+      LongRun.instance.setRunning(commandDef.funcName, true);
+      // execute
+      eval(callStr);
+    }
+    finally {
+      // set running-flg off
+      LongRun.instance.setRunning(commandDef.funcName, false);
+    }
+  }
+
+  /**
+   * Executes long-running command
+   * @param commandDef
+   * @private
+   */
+  private executeLongRunCommand(commandDef:CommandDefinition): void{
+    let params:string[] = TerminalSheet.instance.getParams(commandDef.getParamCount());
+
+    // check if the command has already run.
+    if( LongRun.instance.existsNextTrigger(commandDef.funcName) ){
+      let ret:string = Browser.msgBox('[' + commandDef.commandName + '] already has next trigger.' +
+        'Do you want to ignore it and run?', Browser.Buttons.YES_NO);
+      if( ret != "yes" ){
+        return;
+      }
+    }
+
+    // clear the log.
+    TerminalSheet.instance.clearLog();
+
+    // clear the variables
+    LongRun.instance.reset(commandDef.funcName);
+    // store the parameters and paramsStr should be empty.
+    LongRun.instance.setParameters(commandDef.funcName, params);
+
+    // make the function call string.
+    let callStr:string = commandDef.funcName + "()";
+
+    // execute
+    eval(callStr);
   }
 }

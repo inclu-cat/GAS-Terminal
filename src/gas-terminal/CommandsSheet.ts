@@ -9,14 +9,16 @@ export class CommandsSheet extends SheetBase{
   // Constants of the command definition sheet
   private static _SHEET_NAME:string = 'Commands';
   private static _ROW_INDEX_START:number = 1;
+  private static _COL_COUNT:number = 9;
   private static _COL_INDEX_NAME:number = 0;
   private static _COL_INDEX_FUNC:number = 1;
   private static _COL_INDEX_DESCRIPTION:number = 2;
-  private static _COL_INDEX_PARAM1:number = 3;
-  private static _COL_INDEX_PARAM2:number = 4;
-  private static _COL_INDEX_PARAM3:number = 5;
-  private static _COL_INDEX_PARAM4:number = 6;
-  private static _COL_INDEX_PARAM5:number = 7;
+  private static _COL_INDEX_IS_LONG_RUN:number = 3;
+  private static _COL_INDEX_PARAM1:number = 4;
+  private static _COL_INDEX_PARAM2:number = 5;
+  private static _COL_INDEX_PARAM3:number = 6;
+  private static _COL_INDEX_PARAM4:number = 7;
+  private static _COL_INDEX_PARAM5:number = 8;
   /** Singleton instance */
   private static _instance:CommandsSheet;
   /** Data */
@@ -46,7 +48,8 @@ export class CommandsSheet extends SheetBase{
    */
   public load():void{
       this._commands = [];
-      let dataRange:Range = this.getTableRange(CommandsSheet._ROW_INDEX_START,0,-1, 8);
+      let dataRange:Range = this.getTableRange(
+        CommandsSheet._ROW_INDEX_START,0,-1, CommandsSheet._COL_COUNT);
       if( dataRange != null ) {
           let values:any[][] = dataRange.getValues();
           for (let i = 0; i < dataRange.getNumRows(); i++) {
@@ -85,6 +88,7 @@ export class CommandsSheet extends SheetBase{
       String(row[CommandsSheet._COL_INDEX_NAME]),
       String(row[CommandsSheet._COL_INDEX_FUNC]),
       String(row[CommandsSheet._COL_INDEX_DESCRIPTION]),
+      String(row[CommandsSheet._COL_INDEX_IS_LONG_RUN]).toUpperCase() == 'TRUE',
       params
     );
   }

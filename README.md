@@ -16,7 +16,7 @@ This spreadsheet will help you in the following ways.
 
 ## How to use
 ### 1. Copy the original spreadsheet (only once).
-Open [this spreadsheat](https://docs.google.com/spreadsheets/d/1CczyGa-ueY45RTaK75133SXSgukI_PEiFpFWl5YDp8Y), click [File]-[Make a copy], and save it to your Google Drive with a name of your choice. (You must be signed in with a Google account.)
+Open [this spreadsheat](https://docs.google.com/spreadsheets/d/1Xh0-dhsBwWjOrEbtoctB91ffzWyM3MuaiCaNloEuvrY), click [File]-[Make a copy], and save it to your Google Drive with a name of your choice. (You must be signed in with a Google account.)
 
 ![image](https://user-images.githubusercontent.com/82203087/124213256-38ec0280-db2b-11eb-8733-f60eb0cf9676.png)
 

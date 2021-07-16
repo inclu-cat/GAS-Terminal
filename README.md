@@ -81,5 +81,7 @@ The first time you run it, you will see a dialog asking for permission to run th
 7. You can make any changes you like to the cloned code.
 8. Then do the command `clasp push`, and it will replace your copied spreadsheet's Apps Script with your code.
  
-## Future Plans
-Google Apps Script has the 6 minute execution time limit. This problem is very tricky. So I'll make a feature that support long-run script executions.
+## Support for long-running scripts
+Google Apps Script has the 6 minute execution time limit. This problem is very tricky. 
+You can solve this problem by using the GAS-Terminal's class `LongRun`.
+Please see the sample function named `LongRunTest` in [`Code.ts`](https://github.com/inclu-cat/GAS-Terminal/blob/main/src/Code.ts). You also can run the sample command by select the command named `Long-Running Test (Sample)` and can execute it.

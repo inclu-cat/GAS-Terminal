@@ -3,6 +3,7 @@
  */
 import Properties = GoogleAppsScript.Properties.Properties;
 import {StringUtils} from "./StringUtils";
+import {LogUtils} from "./LogUtils";
 
 export class LongRun {
   // singleton instance
@@ -41,24 +42,40 @@ export class LongRun {
    * @param funcName
    */
   isRunning(funcName:string):boolean{
-    // スプレッドシートのプロパティを取得
+    // get spreadsheet properties
     let properties:Properties = PropertiesService.getScriptProperties();
     let running:string = properties.getProperty(LongRun.PREFIX_RUNNING+funcName);
     return !StringUtils.isEmpty(running);
   }
 
   /**
+   * Sets the function is running
+   * @param funcName
+   * @param running
+   */
+  setRunning(funcName:string, running: boolean): void {
+    let properties: Properties = PropertiesService.getScriptProperties();
+    const key = LongRun.PREFIX_RUNNING + funcName;
+    if(running) {
+      properties.setProperty(key, "running");
+    }
+    else{
+      properties.deleteProperty(key);
+    }
+  }
+
+  /**
    * Sets max execution seconds
    * @param seconds
    */
-  setMaxExecutionTime(seconds:number){
+  setMaxExecutionSeconds(seconds:number){
     LongRun.RUNNING_MAX_SECONDS = seconds;
   }
   /**
    * Sets the trigger's delay minutes
    * @param minutes
    */
-  setTriggerDelaySecond(minutes:number){
+  setTriggerDelayMinutes(minutes:number){
     LongRun.RUNNING_DELAY_MINUTES = minutes;
   }
 
@@ -70,7 +87,7 @@ export class LongRun {
     let properties:Properties = PropertiesService.getScriptProperties();
     let parameters = properties.getProperty(LongRun.PREFIX_OPTION+funcName);
     if( parameters != null ){
-      parameters.split(',');
+      return parameters.split(',');
     }
     else{
       return [];
@@ -92,7 +109,7 @@ export class LongRun {
   }
 
   /**
-   * Starts or Resume Long-running process.
+   * Starts or Resume Long-Run process.
    * @returns start index ( 0 for the first time )
    */
   startOrResume(funcName:string):number{
@@ -103,7 +120,7 @@ export class LongRun {
     let properties:Properties = PropertiesService.getScriptProperties();
 
     // set running-flag
-    properties.setProperty(LongRun.PREFIX_RUNNING+funcName, "running");
+    this.setRunning(funcName, true);
 
     // if the trigger exists, delete it.
     this.deleteTrigger(LongRun.PREFIX_TRIGGER_KEY+funcName);
@@ -127,7 +144,7 @@ export class LongRun {
    */
   checkShouldSuspend(funcName:string, nextIndex:number): boolean{
     let startTime = this.startTimeMap[funcName];
-    let diff = (new Date().getDate() - startTime) / (1000 * 60 * 60);
+    let diff = (new Date().getTime() - startTime) / 1000;
     // If it's past the specified time, suspend the process
     if(diff >= LongRun.RUNNING_MAX_SECONDS){
 
@@ -142,13 +159,6 @@ export class LongRun {
   }
 
   /**
-   * Terminates long-running process
-   * @param funcName
-   */
-  end(funcName:string):void{
-    this.reset(funcName);
-  }
-  /**
    * Resets Long-Running variables
    * @param funcName
    */
@@ -160,6 +170,30 @@ export class LongRun {
     properties.deleteProperty(LongRun.PREFIX_START_POS+funcName);
     properties.deleteProperty(LongRun.PREFIX_OPTION+funcName);
     properties.deleteProperty(LongRun.PREFIX_RUNNING+funcName);
+    properties.deleteProperty(LongRun.PREFIX_TRIGGER_KEY+funcName);
+  }
+
+  /**
+   * Resets Long-Running variables if there is no next trigger.
+   * Returns whether the command has finished or not.
+   * @param funcName
+   */
+  end(funcName:string):boolean {
+    let ret: boolean = false;
+    if( !this.existsNextTrigger(funcName) ){
+      this.reset(funcName);
+      ret = true;
+    }
+    return ret;
+  }
+
+  /**
+   * Returns if there is next trigger.
+   * @param funcName
+   */
+  existsNextTrigger(funcName:string):boolean {
+    let triggerId = PropertiesService.getScriptProperties().getProperty(LongRun.PREFIX_TRIGGER_KEY+funcName);
+    return triggerId != null;
   }
 
   /**

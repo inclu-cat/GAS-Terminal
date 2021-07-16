@@ -1,7 +1,7 @@
 # GAS-Terminal
 A spreadsheet that can easily execute functions (called *commands*) created with Google Apps Script.
 
-The original spreadsheet is [here](https://docs.google.com/spreadsheets/d/1CczyGa-ueY45RTaK75133SXSgukI_PEiFpFWl5YDp8Y).
+The original spreadsheet is [here](https://docs.google.com/spreadsheets/d/1Xh0-dhsBwWjOrEbtoctB91ffzWyM3MuaiCaNloEuvrY).
 
 Related article is [here](https://inclucat.wordpress.com/2021/07/07/gas-terminal-environment-for-smart-execution-of-google-apps-script/).
 

@@ -4,7 +4,8 @@ A spreadsheet that can easily execute functions (called *commands*) created with
 The original spreadsheet is [here](https://docs.google.com/spreadsheets/d/1Xh0-dhsBwWjOrEbtoctB91ffzWyM3MuaiCaNloEuvrY).
 
 Related article is [here](https://inclucat.wordpress.com/2021/07/07/gas-terminal-environment-for-smart-execution-of-google-apps-script/).
-(Now, I am working on an additional article about support for long-running scripts! )
+
+And an article about long-running support is [here](https://inclucat.wordpress.com/2021/07/20/an-easy-way-to-deal-with-google-apps-scripts-6-minute-limit/).
 
 ![image](https://user-images.githubusercontent.com/82203087/124220302-a0f51580-db38-11eb-9d61-05f337308221.png)
 

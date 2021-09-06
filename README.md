@@ -1,9 +1,11 @@
 # GAS-Terminal
-A spreadsheet that can easily execute functions (called *commands*) created with Google Apps Script.
+A spreadsheet that can easily execute functions (called *commands*) created with Google Apps Script. It also supports **long-running** scripts.
 
-The original spreadsheet is [here](https://docs.google.com/spreadsheets/d/1CczyGa-ueY45RTaK75133SXSgukI_PEiFpFWl5YDp8Y).
+The original spreadsheet is [here](https://docs.google.com/spreadsheets/d/1Xh0-dhsBwWjOrEbtoctB91ffzWyM3MuaiCaNloEuvrY).
 
 Related article is [here](https://inclucat.wordpress.com/2021/07/07/gas-terminal-environment-for-smart-execution-of-google-apps-script/).
+
+And an article about long-running support is [here](https://inclucat.wordpress.com/2021/07/20/an-easy-way-to-deal-with-google-apps-scripts-6-minute-limit/).
 
 ![image](https://user-images.githubusercontent.com/82203087/124220302-a0f51580-db38-11eb-9d61-05f337308221.png)
 
@@ -16,7 +18,7 @@ This spreadsheet will help you in the following ways.
 
 ## How to use
 ### 1. Copy the original spreadsheet (only once).
-Open [this spreadsheat](https://docs.google.com/spreadsheets/d/1CczyGa-ueY45RTaK75133SXSgukI_PEiFpFWl5YDp8Y), click [File]-[Make a copy], and save it to your Google Drive with a name of your choice. (You must be signed in with a Google account.)
+Open [this spreadsheat](https://docs.google.com/spreadsheets/d/1Xh0-dhsBwWjOrEbtoctB91ffzWyM3MuaiCaNloEuvrY), click [File]-[Make a copy], and save it to your Google Drive with a name of your choice. (You must be signed in with a Google account.)
 
 ![image](https://user-images.githubusercontent.com/82203087/124213256-38ec0280-db2b-11eb-8733-f60eb0cf9676.png)
 
@@ -33,11 +35,12 @@ In the Script editor, you can write any function you need. You can write it in a
 **Tips**
 * To output the log to the result area, use the LogUtils class.
 * A function can have up to five arguments. (All parameters are of type string)
+* If you want to implement a function that runs for a long time, use the LongRun class. (See the bottom of this README)
 
 ### 4. Write the definition of the command
 In the Commands sheet, write the command definition that corresponds to the function you wrote.
 
-![image](https://user-images.githubusercontent.com/82203087/124215369-d432a700-db2e-11eb-9436-a0558047323a.png)
+![image](https://user-images.githubusercontent.com/82203087/125890198-700d87f4-183d-4238-99a9-c0bc8ec372d0.png)
 
 ### 5. Execute the command
 In the Terminal sheet, select the command, input parameters, then click the Execute button.
@@ -73,13 +76,15 @@ The first time you run it, you will see a dialog asking for permission to run th
 
 ## If you want to modify this tool by using clasp and TypeScript
 1. Follow the instructions above to copy the original spreadsheet. 
-2. Open the Script editor, Click `Project Settings`, Copy the `Script ID`. (We'll use it later)
+2. Open the Script editor, click `Project Settings`, copy the `Script ID`. (We'll use it later)
 3. If you have not installed `clasp` yet, install `clasp`, following [the official page](https://github.com/google/clasp).
 4. Do the command `clasp login`, and login with your account. (If you have not done yet)
 5. Clone this repository, and open the cloned project with your IDE.
-6. open `.clasp.json`, and replace the `scriptId` with your `Script ID` copied above.
+6. Open `.clasp.json`, and replace the `scriptId` with your `Script ID` copied above.
 7. You can make any changes you like to the cloned code.
 8. Then do the command `clasp push`, and it will replace your copied spreadsheet's Apps Script with your code.
  
-## Future Plans
-Google Apps Script has the 6 minute execution time limit. This problem is very tricky. So I'll make a feature that support long-run script executions.
+## Support for long-running scripts
+Google Apps Script has the 6 minute execution time limit. This problem is very tricky. 
+You can solve this problem by using the GAS-Terminal's class `LongRun`.
+Please see the sample function named `LongRunTest` in [`Code.ts`](https://github.com/inclu-cat/GAS-Terminal/blob/main/src/Code.ts). You also can run the sample command by select the command named `Long-Running Test (Sample)` and can execute it.

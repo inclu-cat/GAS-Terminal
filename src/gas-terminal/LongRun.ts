@@ -3,7 +3,6 @@
  */
 import Properties = GoogleAppsScript.Properties.Properties;
 import {StringUtils} from "./StringUtils";
-import {LogUtils} from "./LogUtils";
 
 export class LongRun {
   // singleton instance

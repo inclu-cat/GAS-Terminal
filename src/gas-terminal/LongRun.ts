@@ -2,7 +2,6 @@
  * Long-Running Support
  */
 import Properties = GoogleAppsScript.Properties.Properties;
-import {StringUtils} from "./StringUtils";
 
 export class LongRun {
   // singleton instance
@@ -44,7 +43,7 @@ export class LongRun {
     // get spreadsheet properties
     let properties:Properties = PropertiesService.getScriptProperties();
     let running:string = properties.getProperty(LongRun.PREFIX_RUNNING+funcName);
-    return !StringUtils.isEmpty(running);
+    return !(running == null || running === '');
   }
 
   /**

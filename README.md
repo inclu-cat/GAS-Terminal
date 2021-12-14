@@ -88,4 +88,3 @@ The first time you run it, you will see a dialog asking for permission to run th
 Google Apps Script has the 6 minute execution time limit. This problem is very tricky. 
 You can solve this problem by using the GAS-Terminal's class `LongRun`.
 Please see the sample function named `LongRunTest` in [`Code.ts`](https://github.com/inclu-cat/GAS-Terminal/blob/main/src/Code.ts). You also can run the sample command by select the command named `Long-Running Test (Sample)` and can execute it.  
-**Note:** If you want to use LongRun.ts independently, download StringUtils.ts too, which is used by LongRun.ts.

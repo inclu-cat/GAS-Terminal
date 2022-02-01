@@ -23,9 +23,9 @@ Open [this spreadsheat](https://docs.google.com/spreadsheets/d/1Xh0-dhsBwWjOrEbt
 ![image](https://user-images.githubusercontent.com/82203087/124213256-38ec0280-db2b-11eb-8733-f60eb0cf9676.png)
 
 ### 2. Open the Script editor
-Open the new spreadsheet, click [Tools]-[Script editor].
+Open the new spreadsheet, click [Extensions]-[Apps Script].
 
-![image](https://user-images.githubusercontent.com/82203087/124213405-73559f80-db2b-11eb-8390-e8d13fa9c55d.png)
+![image](https://user-images.githubusercontent.com/82203087/151940229-ce5d7f61-0096-4613-bffc-ce1dcc44baac.png)
 
 ### 3. Write your code.
 In the Script editor, you can write any function you need. You can write it in any source file you like (or in a new file, of course), but do not edit the group of files starting with `gas-terminal`.
